@@ -1,0 +1,15 @@
+resources:
+  pipelines:
+    pipeline_pipeline:
+      name: pipeline
+      libraries:
+        - glob:
+            include: /Workspace/Users/andreqf03@gmail.com/projetos-github/pipeline-passageiros-impactados/pipeline/**
+      schema: dados
+      continuous: false
+      development: false
+      photon: true
+      channel: CURRENT
+      catalog: passageiros_impactados
+      serverless: true
+      root_path: /Workspace/Users/andreqf03@gmail.com/projetos-github/pipeline-passageiros-impactados/pipeline
