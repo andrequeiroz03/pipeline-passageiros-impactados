@@ -2,16 +2,13 @@ from pyspark import pipelines as dp
 from pyspark.sql.window import Window
 from pyspark.sql.functions import col, date_format, row_number, regexp_extract, regexp_replace
 
-@dp.table(
-    name="workspace.andre_testes.silver_table"
-)
-
-def silver_table():
-    df = spark.read.table("workspace.andre_testes.bronze_table")
+@dp.table
+def silver_viagens():
+    df = spark.read.table("passageiros_impactados.dados.bronze_viagens")
 
     #selecionar colunas
     df =  df.select(
-        col("data_referencia"), #date_format(col("data_referencia"), "yyyy-MM-dd").alias("data_referencia"),
+        col("data_referencia"),
         col("prefixo"),
         regexp_extract(col("prefixo"), r"^([A-Za-z]+)", 1).alias("prefixo_letras"),
         regexp_replace(col("status"), "ConcluÃ­da", "Concluída").alias("status"),

@@ -1,11 +1,9 @@
 from pyspark import pipelines as dp
 
-bucket = "s3://meu-bucket-dados-json/raw/partidas_trem/"
+bucket = "s3://meu-bucket-dados-json/raw/viagens/"
 
-@dp.table(
-    name="workspace.andre_testes.bronze_table"
-)
-def bronze_table():
+@dp.table
+def bronze_viagens():
     df = (spark.readStream
             .format("cloudFiles")
             .option("cloudFiles.format", "json")
