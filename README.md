@@ -1,7 +1,7 @@
 # Databricks, S3 & Power BI - Passageiros Impactados
 
 ## Descrição
-Pipeline no **Databricks** que captura, de forma incremental, dados brutos de movimentação de trens de um **bucket S3**, processando-os através de uma **arquitetura medallion** até uma camada gold que alimenta um dashboard no Power BI que quantifica **`passageiros impactados`** por atraso nos trens, fornecendo indicadores solicitados pela gestão para acompanhamento da operação.
+Pipeline no **Databricks** que captura, de forma incremental, dados brutos de movimentação de trens de um **bucket S3**, processando-os através de uma **arquitetura medallion** até uma camada gold que alimenta um dashboard no Power BI que quantifica **`passageiros impactados`** por atraso nos trens, fornecendo indicadores para acompanhamento da operação.
 
 ## Contexto e detalhes do negócio
 Numa estação de trem, o intervalo em minutos entre um trem e outro é chamado de **`headway`**. Para cada horário do dia existe um headway programado. Quando o headway programado é violado, uma quantidade significativa de passageiros é impactado.
