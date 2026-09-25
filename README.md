@@ -37,7 +37,7 @@ Limpeza e padronização.
 
 | Tabela | Arquivo | O que faz
 |---|---|---|
-| `silver_viagens` | 02_silver_viagens.py | Tratamento dos dados brutos: formato das colunas, criação de colunas auxiliares e correção de valores |
+| `silver_viagens` | 02_silver_viagens.py | Tratamento dos dados brutos: formato das colunas, criação de colunas auxiliares e correção de valores. Como precisamos apenas do ponto de partida de cada trem, é nessa etapa que usamos Window Functions para enumerar a sequência de estações que cada trem passou numa viagem, permitindo filtrar apenas o ponto inicial. |
 
 ### Camada Gold
 Aplicação das regras de negócio.
@@ -50,7 +50,7 @@ Aplicação das regras de negócio.
 
 - No Power BI, foram desenvolvidos indicadores para monitoramento de **passageiros impactados**, **custo por passageiro impactado**, **custo de viagens canceladas**, **quantidade de viagens canceladas e atrasadas** e **intervalo médio entre viagens**. O dashboard permite análises por período, semana, horário e sentido de operação, além do detalhamento das viagens responsáveis pelos impactos. A solução proporciona uma visão integrada dos impactos operacionais, dos passageiros afetados e dos custos associados.
 
-![](docs/dashboard.png)
+![](dashboard/dashboard.png)
 
 ### Stack
 
