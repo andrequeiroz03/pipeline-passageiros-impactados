@@ -23,7 +23,7 @@ Suponha que o intervalo programado para esse horário fosse de 4 minutos, mas en
 
 ## Arquitetura
 
-![](docs/dag_pipeline.png)
+![](docs/arquitetura.png)
 
 ### Camada Bronze
 Dados brutos armazenados no S3.
@@ -45,6 +45,8 @@ Aplicação das regras de negócio.
 | Tabela | Arquivo | O que faz
 |---|---|---|
 | `gold_viagens` | 03_gold_viagens.py | Filtragem das viagens aplicado as regras de negócio e cálculo do headway |
+
+![](docs/dag_pipeline.png)
 
 ## Resultados
 
