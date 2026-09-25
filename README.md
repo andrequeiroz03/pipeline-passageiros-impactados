@@ -4,9 +4,9 @@
 Pipeline no **Databricks** que captura, de forma incremental, dados brutos de movimentação de trens de um **bucket S3**, processando-os através de uma **arquitetura medallion** até uma camada gold que alimenta um dashboard no Power BI que quantifica **`passageiros impactados`** por atraso nos trens, fornecendo indicadores solicitados pela gestão para acompanhamento da operação.
 
 ## Contexto e detalhes do negócio
-Numa estação de trem, o intervalo em minutos entre um trem e outro é chamado de **`headway`**. Para cada horário do dia existe um headway programado (nos horários de pico é menor, no vale maior). Quando o headway programado é violado em 100%, uma quantidade significativa de passageiros é impactado.
+Numa estação de trem, o intervalo em minutos entre um trem e outro é chamado de **`headway`**. Para cada horário do dia existe um headway programado. Quando o headway programado é violado, uma quantidade significativa de passageiros é impactado.
 
-Suponha um trecho com 10 estações. Para identificar os headways violados, basta ir na estação 1 e ver o horário que todos os trens dali partiram naquele dia, calcular o intervalo entre eles e, para cada intervalo, comparar com o programado para aquele horário.
+Suponha um trecho com 10 estações. Para identificar os headways violados, basta ir na estação 1 e ver o horário que todos os trens dali partiram, calcular o intervalo entre eles e, para cada intervalo, comparar com o programado para aquele horário.
 
 Exemplo:
 
@@ -19,7 +19,7 @@ Exemplo:
 
 Suponha que o intervalo programado para esse horário fosse de 4 minutos, mas entre o trem T002 e o trem T003, houve um intervalo de 8 minutos (atraso de 100%): são nessas viagens que o estudo busca quantificar os impactados.
 
-A função do pipeline é transformar os dados brutos das viagens no formato exemplificado para facilitar o cálculo.
+**`A objetivo do pipeline é capturar os dados brutos e formatá-los como no exemplo, para permitir o cálculo no Power BI.`**
 
 ## Arquitetura
 
@@ -46,12 +46,20 @@ Aplicação das regras de negócio.
 |---|---|---|
 | `gold_viagens` | 03_gold_viagens.py | Filtragem das viagens aplicado as regras de negócio e cálculo do headway |
 
+## Resultados
+
+- No Power BI, foram desenvolvidos indicadores para monitoramento de **passageiros impactados**, **custo por passageiro impactado**, **custo de viagens canceladas**, **quantidade de viagens canceladas e atrasadas** e **intervalo médio entre viagens**. O dashboard permite análises por período, semana, horário e sentido de operação, além do detalhamento das viagens responsáveis pelos impactos. A solução proporciona uma visão integrada dos impactos operacionais, dos passageiros afetados e dos custos associados.
+
+![](docs/dashboard.png)
+
 ### Stack
 
 - Databricks (DLT, Auto Loader, Unity Catalog)
 - AWS S3 Bucket
 - Arquitetura Medallion
 - Power BI.
+
+Obs: Por se tratar de um projeto corporativo privado, todo o desenvolvimento foi replicado na minha máquina com recursos pessoas e dados mascarados (Databricks Free Edition e AWS Free Trial)
 
 
 
